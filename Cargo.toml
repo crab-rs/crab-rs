@@ -30,9 +30,6 @@ serde = { version = "1.0.209", features = ["derive"] }
 
 getrandom = { version = "0.2.15", features = ["js"] , optional = true}
 
-[package.metadata.cargo-apple.ios]
-frameworks = [ "WebKit" ]
-
 [package.metadata.bundle]
 name = "Wallet"
 identifier = "com.zhouzhipeng.wallet"
@@ -45,4 +42,19 @@ a title bar.  It serves as an example of an application that
 can be bundled with cargo-bundle, as well as a test-case for
 cargo-bundle's support for bundling crate examples.
 """
-osx_frameworks = ["WebKit"]
+
+
+
+[package.metadata.bundle.macos]
+minimum_system_version = "10.13"
+frameworks = []
+# DMG specific configuration
+create_dmg = true
+#dmg_background = "path/to/your/background.png"
+#dmg_window_position = [100, 100]
+#dmg_window_size = [500, 400]
+#dmg_icon_position = [225, 175]
+#dmg_icon_size = 80
+
+[package.metadata.bundle.ios]
+frameworks = ["WebKit"]
