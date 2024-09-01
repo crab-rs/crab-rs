@@ -1,5 +1,5 @@
 [package]
-name = "DioxusApp"
+name = "Wallet"
 version = "0.1.0"
 edition = "2021"
 description ="demo"
@@ -34,8 +34,8 @@ getrandom = { version = "0.2.15", features = ["js"] , optional = true}
 frameworks = [ "WebKit" ]
 
 [package.metadata.bundle]
-name = "DioxusApp"
-identifier = "com.dioxuslabs"
+name = "Wallet"
+identifier = "com.zhouzhipeng.wallet"
 resources = ["assets/**/*"]
 category = "Utility"
 short_description = "An example of a bundled application"
