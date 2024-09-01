@@ -1,0 +1,75 @@
+.result-label{
+    width: 500px; /* 设置一个固定宽度 */
+    white-space: nowrap; /* 防止文本换行 */
+    overflow: hidden; /* 隐藏超出部分 */
+    text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+    display: inline-block; /* 使 width 属性生效 */
+}
+
+
+/* 添加一些额外的样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+#main {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button-group2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.button-group3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    width: 100%;
+}
+
+.button.outline {
+    margin-bottom: 10px;
+}
+
+.result-label {
+    font-weight: bold;
+}
+
+pre {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+
+.button+.button {
+     margin-left: 0;
+}

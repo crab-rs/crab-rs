@@ -1,0 +1,48 @@
+[package]
+name = "DioxusApp"
+version = "0.1.0"
+edition = "2021"
+description ="demo"
+
+[features]
+web=["dioxus/web", "getrandom"]
+mobile= ["dioxus/mobile"]
+desktop= ["dioxus/desktop"]
+
+[dependencies]
+dioxus = { version = "0.5"}
+# Debug
+dioxus-logger = "0.5.1"
+log = "0.4.22"
+md5 = "0.7.0"
+sha2 = "0.10"
+sha3 = "0.10.8"
+base64 = "0.22.1"
+bitcoin = "0.32.2"
+ethereum-types = "0.14.1"
+secp256k1= "0.29.0"
+hex = "0.4.3"
+bs58 = "0.5.1"
+reqwest = { version = "0.12.7", features = ["json"] }
+serde_json = "1.0.127"
+anyhow = "1.0.86"
+serde = { version = "1.0.209", features = ["derive"] }
+
+getrandom = { version = "0.2.15", features = ["js"] , optional = true}
+
+[package.metadata.cargo-apple.ios]
+frameworks = [ "WebKit" ]
+
+[package.metadata.bundle]
+name = "DioxusApp"
+identifier = "com.dioxuslabs"
+resources = ["assets/**/*"]
+category = "Utility"
+short_description = "An example of a bundled application"
+long_description = """
+A trivial application that just displays a blank window with
+a title bar.  It serves as an example of an application that
+can be bundled with cargo-bundle, as well as a test-case for
+cargo-bundle's support for bundling crate examples.
+"""
+osx_frameworks = ["WebKit"]
