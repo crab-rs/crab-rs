@@ -3,6 +3,8 @@
 # App (Project) Name
 name = "wallet"
 
+base_path = ""
+
 # Dioxus App Default Platform
 # web, desktop, fullstack
 default_platform = "web"
@@ -33,7 +35,7 @@ watch_path = ["src", "assets"]
 
 # CSS style file
 
-style = ["./chota.min.css", "./main.css"]
+style = []
 
 # Javascript code file
 script = []

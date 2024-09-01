@@ -123,6 +123,21 @@ dependencies = [
   "run-ios-device",
 ]
 
+
+[tasks.build_ipa]
+dependencies = [
+  "build_ios_device",
+]
+script = '''
+set -eux
+
+cp -r target/aarch64-apple-ios/release/bundle/ios target/Payload
+cd target
+zip -r wallet.ipa Payload
+rm -rf ../Payload
+echo "generate ipa at :$(pwd)/wallet.ipa"
+'''
+
 [tasks.serve]
 dependencies = [
   "run_ios_sim",
@@ -140,12 +155,14 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH" &&  export LDFLAGS="-L/opt/homebr
 rm -rf dist
 dx build --release --features web
 
-cp assets/index_prod.html dist/index.html
 
 
 '''
 
 [tasks.upload_wasm]
+dependencies = [
+  "build_wasm",
+]
 script = '''
 
 set -eux

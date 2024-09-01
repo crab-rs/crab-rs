@@ -30,7 +30,7 @@ fn App() -> Element {
     rsx! {
          style { {include_str!("../assets/chota.min.css")} }
          style { {include_str!("../assets/main.css")} }
-
+        h3{"test"}
         div {
             div {
                 class:"button-group",

@@ -14,3 +14,4 @@ target/
 **/*.rs.bk
 
 *.br
+.DS_Store
