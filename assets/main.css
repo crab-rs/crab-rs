@@ -1,5 +1,5 @@
 .result-label{
-    width: 500px; /* 设置一个固定宽度 */
+    width: 200px; /* 设置一个固定宽度 */
     white-space: nowrap; /* 防止文本换行 */
     overflow: hidden; /* 隐藏超出部分 */
     text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
@@ -72,4 +72,81 @@ hr {
 
 .button+.button {
      margin-left: 0;
+}
+
+
+/* 更新的响应式样式 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
+#main {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-group, .button-group2, .button-group3 {
+    display: grid;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.button-group {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.button-group2, .button-group3 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.button {
+    width: 100%;
+    padding: 8px 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.result-label {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 11px;
+    margin: 5px 0;
+}
+
+hr {
+    margin: 10px 0;
+}
+
+@media (max-width: 320px) {
+    .button-group {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .button-group2, .button-group3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .button {
+        font-size: 11px;
+        padding: 6px 2px;
+    }
 }

@@ -8,13 +8,6 @@ Run the following command in the root of the project to start the Dioxus dev ser
 cargo install cargo-make 
 # install dioxus-cli
 cargo install dioxus-cli
-
-# install targets
-rustup target add aarch64-apple-darwin
-rustup target add aarch64-apple-ios
-rustup target add aarch64-apple-ios-sim
-rustup target add wasm32-unknown-unknown
-
 ```
 
 ## run dev-sever with hot-reloading
@@ -26,9 +19,28 @@ cargo make dev_server
 ```bash
 cargo make upload_wasm
 ```
+
+
+## run on ios simulator
+```bash
+cargo make run_ios_sim
+```
+
+
 ## build ipa file for ios
 ```bash
 cargo make build_ipa
+```
+
+
+## build for macos
+```bash
+cargo make build_macos
+```
+
+## run  macos
+```bash
+cargo make run_macos
 ```
 
 

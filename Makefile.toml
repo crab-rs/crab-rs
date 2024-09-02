@@ -1,6 +1,8 @@
 [tasks.build_ios_sim]
-args = ["bundle", "--target", "aarch64-apple-ios-sim", "--features", "mobile"]
-command = "cargo"
+script = '''
+cargo bundle --target aarch64-apple-ios-sim --features mobile
+'''
+
 
 [tasks.build_ios_device]
 command = "cargo"
@@ -10,6 +12,11 @@ args = ["bundle","--release", "--target", "aarch64-apple-ios", "--features", "mo
 args = ["bundle","--release", "--target", "aarch64-apple-darwin", "--features", "desktop"]
 command = "cargo"
 
+[tasks.run_macos]
+script = '''
+cargo run --package Wallet --bin Wallet  --features desktop
+'''
+
 
 
 [tasks.install_ios_sim]
@@ -18,11 +25,11 @@ args = [
   "simctl",
   "install",
   "booted",
-  "target/aarch64-apple-ios-sim/debug/bundle/ios/DioxusApp.app",
+  "target/aarch64-apple-ios-sim/debug/bundle/ios/Wallet.app",
 ]
 
 [tasks.run_ios_sim]
-args = ["simctl", "launch", "--console", "booted", "com.dioxuslabs"]
+args = ["simctl", "launch", "--console", "booted", "com.zhouzhipeng.wallet"]
 command = "xcrun"
 dependencies = ["build_ios_sim", "install_ios_sim"]
 

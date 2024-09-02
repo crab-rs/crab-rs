@@ -1,3 +1,9 @@
 [toolchain]
 #channel = "nightly-2024-08-26"
 channel = "1.80"
+targets = [
+ "aarch64-apple-darwin",
+ "aarch64-apple-ios",
+ "aarch64-apple-ios-sim",
+ "wasm32-unknown-unknown",
+]
