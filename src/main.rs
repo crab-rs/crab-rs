@@ -30,6 +30,9 @@ fn App() -> Element {
     rsx! {
          style { {include_str!("../assets/chota.min.css")} }
          style { {include_str!("../assets/main.css")} }
+         if cfg!(target_os = "ios"){
+         style { {include_str!("../assets/ios.css")} }
+         }
         div {
             div {
                 class:"button-group",
@@ -60,7 +63,10 @@ fn App() -> Element {
             QueryBtcBalanceComp{}
             QueryEthBalanceComp{}
             QueryUsdtBalanceComp{}
+
+
         }
+
     }
 }
 

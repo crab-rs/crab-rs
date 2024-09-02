@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleIdentifier</key>
+  <string>com.zhouzhipeng.wallet</string>
+  <key>CFBundleDisplayName</key>
+  <string>Wallet</string>
+  <key>CFBundleName</key>
+  <string>Wallet</string>
+  <key>CFBundleExecutable</key>
+  <string>Wallet</string>
+  <key>CFBundleVersion</key>
+  <string>0.1.0</string>
+  <key>CFBundleShortVersionString</key>
+  <string>0.1.0</string>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en_US</string>
+  <key>UILaunchStoryboardName</key>
+  <string></string>
+  <key>LSRequiresIPhoneOS</key>
+  <true/>
+     <!-- 新添加的背景颜色设置 -->
+       <key>UILaunchScreens</key>
+       <dict>
+           <key>UIColorName</key>
+           <string>systemBlue</string>
+       </dict>
+
+</dict>
+</plist>

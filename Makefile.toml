@@ -1,6 +1,8 @@
 [tasks.build_ios_sim]
 script = '''
+set -eux
 cargo bundle --target aarch64-apple-ios-sim --features mobile
+cp assets/Info.plist target/aarch64-apple-ios-sim/debug/bundle/ios/Wallet.app/Info.plist
 '''
 
 
