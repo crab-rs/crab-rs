@@ -152,7 +152,7 @@ hr {
 }
 
 
-
+/*防止在iphone safari上 双击会导致页面放大*/
 html, body {
     touch-action: none;
     user-select: none;
