@@ -7,7 +7,6 @@ use base64::Engine;
 use base64::engine::general_purpose;
 use bitcoin::{Address, Network, PrivateKey, PublicKey};
 use bitcoin::secp256k1::Secp256k1;
-use dioxus::mobile::{Config, LogicalSize, WindowBuilder};
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
 use sha2::{Digest, Sha256};
