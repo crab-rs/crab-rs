@@ -10,7 +10,8 @@ mobile= ["dioxus/mobile"]
 desktop= ["dioxus/desktop"]
 
 [dependencies]
-dioxus = { version = "0.5"}
+#dioxus = { version = "0.5"}
+dioxus = { path="/Users/zhouzhipeng/RustroverProjects/dioxus/packages/dioxus"}
 # Debug
 dioxus-logger = "0.5.1"
 log = "0.4.22"

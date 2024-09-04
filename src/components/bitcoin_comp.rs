@@ -66,7 +66,7 @@ pub fn GenBitcoinAddrButton() -> Element {
 #[component]
 pub fn QueryBtcBalanceComp() -> Element {
     let btc_addr = use_context::<MyState>().btc_addr;
-    if *btc_addr.read()!=""{
+
         let r = use_resource(move || async move { query_btc_balance(&btc_addr.read()).await});
         return rsx! {
 
@@ -79,9 +79,7 @@ pub fn QueryBtcBalanceComp() -> Element {
             }
         }
 
-    }
 
-    None
 }
 
 async fn query_btc_balance(address: &str) ->anyhow::Result<f64>{

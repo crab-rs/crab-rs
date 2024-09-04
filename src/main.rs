@@ -7,6 +7,7 @@ use base64::Engine;
 use base64::engine::general_purpose;
 use bitcoin::{Address, Network, PrivateKey, PublicKey};
 use bitcoin::secp256k1::Secp256k1;
+use dioxus::mobile::{Config, LogicalSize, WindowBuilder};
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
 use sha2::{Digest, Sha256};
@@ -20,6 +21,21 @@ fn main() {
     // Init logger
     dioxus_logger::init(Level::INFO).expect("failed to init logger");
     info!("starting app");
+
+    #[cfg(target_os = "ios")]
+    {
+        use dioxus::mobile::{Config, LogicalSize, WindowBuilder};
+        LaunchBuilder::mobile()
+            .with_cfg(
+                Config::new().with_window(
+                    WindowBuilder::new()
+                        .with_inner_size(LogicalSize::new(390.0, 1000.0)),
+                ),
+            )
+            .launch(crate::App);
+    }
+
+    #[cfg(not(target_os = "ios"))]
     launch(App);
 }
 
@@ -30,9 +46,6 @@ fn App() -> Element {
     rsx! {
          style { {include_str!("../assets/chota.min.css")} }
          style { {include_str!("../assets/main.css")} }
-         if cfg!(target_os = "ios"){
-         style { {include_str!("../assets/ios.css")} }
-         }
         div {
             div {
                 class:"button-group",

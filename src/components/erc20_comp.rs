@@ -32,7 +32,7 @@ pub fn GenErc20AddrButton() -> Element {
 #[component]
 pub fn QueryEthBalanceComp() -> Element {
     let erc20_addr = use_context::<MyState>().erc20_addr;
-    if *erc20_addr.read()!=""{
+
         let r = use_resource(move || async move { query_eth_balance(&erc20_addr.read()).await});
         return rsx! {
 
@@ -45,14 +45,11 @@ pub fn QueryEthBalanceComp() -> Element {
             }
         }
 
-    }
 
-    None
 }
 #[component]
 pub fn QueryUsdtBalanceComp() -> Element {
     let erc20_addr = use_context::<MyState>().erc20_addr;
-    if *erc20_addr.read()!=""{
         let r = use_resource(move || async move { query_usdt_balance(&erc20_addr.read()).await});
         return rsx! {
 
@@ -65,9 +62,6 @@ pub fn QueryUsdtBalanceComp() -> Element {
             }
         }
 
-    }
-
-    None
 }
 
 async fn query_eth_balance(address: &str) ->anyhow::Result<f64>{

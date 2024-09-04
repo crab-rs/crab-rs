@@ -16,11 +16,27 @@
   <string>0.1.0</string>
   <key>CFBundleDevelopmentRegion</key>
   <string>en_US</string>
-  <key>UILaunchStoryboardName</key>
-  <string></string>
+ <!-- 设置启动屏幕 -->
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+
   <key>LSRequiresIPhoneOS</key>
   <true/>
-<key>UILaunchStoryboardName</key>
-<string>LaunchScreen</string>
+   <!-- 启用全屏显示 -->
+      <key>UIRequiresFullScreen</key>
+      <true/>
+
+        <!-- 允许应用扩展到安全区域之外 -->
+          <key>UIViewControllerBasedStatusBarAppearance</key>
+          <false/>
+
+
+
+          <!-- 设置应用支持的设备 -->
+          <key>UIDeviceFamily</key>
+          <array>
+              <integer>1</integer> <!-- iPhone -->
+              <integer>2</integer> <!-- iPad -->
+          </array>
 </dict>
 </plist>
