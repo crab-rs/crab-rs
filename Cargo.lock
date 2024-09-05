@@ -7,22 +7,14 @@ name = "Wallet"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "base64 0.22.1",
- "bitcoin",
- "bs58",
  "dioxus",
  "dioxus-logger",
- "ethereum-types",
  "getrandom 0.2.15",
- "hex",
  "log",
- "md5",
  "reqwest",
- "secp256k1",
+ "rust-utils",
  "serde",
  "serde_json",
- "sha2",
- "sha3",
 ]
 
 [[package]]
@@ -406,6 +398,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "blockchain"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "base64 0.22.1",
+ "bitcoin",
+ "bs58",
+ "common",
+ "ethereum-types",
+ "hex",
+ "log",
+ "reqwest",
+ "secp256k1",
+ "serde_json",
+ "sha2",
+ "sha3",
+]
+
+[[package]]
 name = "blocking"
 version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -594,6 +605,15 @@ checksum = "ba5a308b75df32fe02788e748662718f03fde005016435c444eea572398219fd"
 dependencies = [
  "bytes",
  "memchr",
+]
+
+[[package]]
+name = "common"
+version = "0.1.0"
+dependencies = [
+ "base64 0.22.1",
+ "md5",
+ "sha2",
 ]
 
 [[package]]
@@ -3678,6 +3698,14 @@ checksum = "bb919243f34364b6bd2fc10ef797edbfa75f33c252e7998527479c6d6b47e1ec"
 dependencies = [
  "bytes",
  "rustc-hex",
+]
+
+[[package]]
+name = "rust-utils"
+version = "0.1.0"
+dependencies = [
+ "blockchain",
+ "common",
 ]
 
 [[package]]

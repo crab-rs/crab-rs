@@ -3,13 +3,8 @@
 mod components;
 
 use std::str::FromStr;
-use base64::Engine;
-use base64::engine::general_purpose;
-use bitcoin::{Address, Network, PrivateKey, PublicKey};
-use bitcoin::secp256k1::Secp256k1;
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
-use sha2::{Digest, Sha256};
 use crate::components::bitcoin_comp::{GenBitcoinAddrButton, QueryBtcBalanceComp};
 use crate::components::common_alg_comp::{AlgButton, AlgButtonList};
 use crate::components::erc20_comp::{GenErc20AddrButton, QueryEthBalanceComp, QueryUsdtBalanceComp};

@@ -4,14 +4,20 @@ default_to_workspace = false
 [tasks.build_ios_sim]
 script = '''
 set -eux
-cargo bundle --target aarch64-apple-ios-sim --features mobile  --format ios
-cp assets/Info.plist target/aarch64-apple-ios-sim/debug/bundle/ios/Wallet.app/Info.plist
+cargo bundle --target aarch64-apple-ios-sim --features mobile
+#cp assets/Info.plist target/aarch64-apple-ios-sim/debug/bundle/ios/Wallet.app/Info.plist
 '''
 
 
 [tasks.build_ios_device]
-command = "cargo"
-args = ["bundle","--release", "--target", "aarch64-apple-ios", "--features", "mobile"]
+script = '''
+
+set -eux
+
+cargo clean
+cargo bundle --release --target aarch64-apple-ios --features mobile
+
+'''
 
 [tasks.build_macos]
 args = ["bundle","--release", "--target", "aarch64-apple-darwin", "--features", "desktop"]
@@ -143,11 +149,15 @@ dependencies = [
 script = '''
 set -eux
 
+
+
 cp -r target/aarch64-apple-ios/release/bundle/ios target/Payload
 cd target
+rm -rf wallet.ipa
 zip -r wallet.ipa Payload
 rm -rf ../Payload
 echo "generate ipa at :$(pwd)/wallet.ipa"
+open $(pwd)
 '''
 
 [tasks.serve]
@@ -160,7 +170,7 @@ dependencies = [
 script = '''
 
 set -eux
-
+cargo clean
 #brew install llvm
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH" &&  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" && export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
