@@ -11,20 +11,17 @@ build_macos:
 
 build_ipa:build_ios_device
 	cp -r target/aarch64-apple-ios/release/bundle/ios target/Payload
-	cd target
-	rm -rf wallet.ipa
-	zip -r wallet.ipa Payload
-	rm -rf ../Payload
-	echo "generate ipa at :$(pwd)/wallet.ipa"
-	#open $(pwd)
-	cp -r  $(pwd)/wallet.ipa /Users/zhouzhipeng/Library/Mobile\ Documents/com~apple~CloudDocs/wallet.ipa
+	cd target &&\
+	rm -rf wallet.ipa&&\
+	zip -r wallet.ipa Payload&&\
+	rm -rf ../Payload&&\
+	cp -r  wallet.ipa /Users/zhouzhipeng/Library/Mobile\ Documents/com~apple~CloudDocs/wallet.ipa
 
 build_wasm:
 	cargo clean
     #brew install llvm
-	export PATH="/opt/homebrew/opt/llvm/bin:$PATH" &&  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" && export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-	rm -rf dist
+	export PATH="/opt/homebrew/opt/llvm/bin:$(PATH)" &&  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" && export CPPFLAGS="-I/opt/homebrew/opt/llvm/include" && \
+	rm -rf dist && \
 	dx build --release --features web
 
 install_ios_sim:
@@ -48,7 +45,7 @@ upload_wasm:build_wasm
 	mv wallet.zip dist/
 
 	curl 'https://zhouzhipeng.com/files/upload?unzip=true' \
-      -H "$AUTH_KEY" \
+      -H "${AUTH_KEY}" \
       -F "file=@dist/wallet.zip"
 
 
