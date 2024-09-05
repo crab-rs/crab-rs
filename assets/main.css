@@ -110,7 +110,7 @@ body {
 .button {
     width: 100%;
     padding: 8px 4px;
-    font-size: 12px;
+    font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -128,7 +128,7 @@ body {
 pre {
     white-space: pre-wrap;
     word-break: break-all;
-    font-size: 11px;
+    font-size: 16px;
     margin: 5px 0;
 }
 

@@ -157,7 +157,9 @@ rm -rf wallet.ipa
 zip -r wallet.ipa Payload
 rm -rf ../Payload
 echo "generate ipa at :$(pwd)/wallet.ipa"
-open $(pwd)
+#open $(pwd)
+cp -r  $(pwd)/wallet.ipa /Users/zhouzhipeng/Library/Mobile\ Documents/com~apple~CloudDocs/wallet.ipa
+
 '''
 
 [tasks.serve]
