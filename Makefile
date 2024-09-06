@@ -35,8 +35,6 @@ run_ios_sim:build_ios_sim install_ios_sim
 
 upload_wasm:build_wasm
 	cp -r dist wallet
-	rm -rf wallet/*.br
-	rm -rf wallet/assets/*.br
 
 	zip -r wallet.zip wallet
 

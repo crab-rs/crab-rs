@@ -38,8 +38,8 @@ fn App() -> Element {
 
     //see style: https://jenil.github.io/chota/#buttons
     rsx! {
-         style { {include_str!("../assets/chota.min.css")} }
-         style { {include_str!("../assets/main.css")} }
+         style { {include_str!("../public/chota.min.css")} }
+         style { {include_str!("../public/main.css")} }
         div {
             div {
                 class:"button-group",
