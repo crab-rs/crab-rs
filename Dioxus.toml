@@ -16,6 +16,7 @@ out_dir = "dist"
 # resource (assets) file folder
 asset_dir = "public"
 
+[web]
 pre_compress=false
 
 [web.app]
