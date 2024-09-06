@@ -8,6 +8,7 @@ Run the following command in the root of the project to start the Dioxus dev ser
 cargo install dioxus-cli
 ```
 
-
+## tips
+* `attach to proces ` support ios emulator
 
 

@@ -1,6 +1,5 @@
-## bind to DioxusConfig.rs
 [application]
-
+## bind to DioxusConfig.rs
 # App (Project) Name
 name = "wallet"
 
