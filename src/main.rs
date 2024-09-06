@@ -52,7 +52,7 @@ fn App() -> Element {
             hr {}
 
             AlgButtonList{}
-
+h2{color:"yellow","sdf22"}
             hr {}
 
             div{

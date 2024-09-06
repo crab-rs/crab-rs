@@ -48,8 +48,8 @@ upload_wasm:build_wasm
 
 
 dev_server:
-	export PATH="/opt/homebrew/opt/llvm/bin:$(PATH)" && \
+	export PATH="/opt/homebrew/opt/llvm/bin:${PATH}" && \
 	export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" &&\
 	export CPPFLAGS="-I/opt/homebrew/opt/llvm/include" &&\
-	dx serve --hot-reload --no-default-feature --features web --platform web
+	dx serve --hot-reload  --features web --platform web
 
