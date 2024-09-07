@@ -31,7 +31,7 @@ pub fn QueryEthBalanceComp() -> Element {
     let erc20_addr = use_context::<MyState>().erc20_addr;
 
         let r = use_resource(move || async move { query_eth_balance(&erc20_addr.read()).await});
-        return rsx! {
+        rsx! {
 
              pre{
                 match &*r.read() {
@@ -48,7 +48,7 @@ pub fn QueryEthBalanceComp() -> Element {
 pub fn QueryUsdtBalanceComp() -> Element {
     let erc20_addr = use_context::<MyState>().erc20_addr;
         let r = use_resource(move || async move { query_usdt_balance(&erc20_addr.read()).await});
-        return rsx! {
+        rsx! {
 
              pre{
                 match &*r.read() {

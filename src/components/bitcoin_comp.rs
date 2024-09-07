@@ -28,7 +28,7 @@ pub fn QueryBtcBalanceComp() -> Element {
     let btc_addr = use_context::<MyState>().btc_addr;
 
         let r = use_resource(move || async move { rust_utils::bitcoin_wallet::query_btc_balance(&btc_addr.read()).await});
-        return rsx! {
+        rsx! {
 
              pre{
                 match &*r.read() {
