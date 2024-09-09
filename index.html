@@ -12,10 +12,12 @@
 <body>
 <div id="main"></div>
 <script type="module">
-    import init from "{base_path}/assets/dioxus/{app_name}.js";
+    import init from "/{base_path}/assets/dioxus/{app_name}.js";
 
-    init("{base_path}/assets/dioxus/{app_name}_bg.wasm").then(wasm => {
-        wasm.main();
+    init("/{base_path}/assets/dioxus/{app_name}_bg.wasm").then(wasm => {
+        if (wasm.__wbindgen_start == undefined) {
+            wasm.main();
+        }
     });
 </script>
 {script_include}

@@ -48,8 +48,9 @@ upload_wasm:build_wasm
 
 
 dev_server:
+	lsof -ti:8080 | xargs kill -9
 	export PATH="/opt/homebrew/opt/llvm/bin:${PATH}" && \
 	export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" &&\
 	export CPPFLAGS="-I/opt/homebrew/opt/llvm/include" &&\
-	dx serve --hot-reload  --features web --platform web
+	dx serve --hot-reload  --features web --platform web --open
 

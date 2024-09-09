@@ -21,6 +21,9 @@ anyhow = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 rust-utils={path="/Users/zhouzhipeng/RustroverProjects/rust-utils", features = ["data-api"]}
 
+[dev-dependencies]
+tokio={version = "1", features = ["full"]}
+
 [package.metadata.bundle]
 name = "crab-rs"
 identifier = "com.zhouzhipeng.crab"
