@@ -1,14 +1,10 @@
 #![allow(non_snake_case)]
 
-mod components;
 
-use std::str::FromStr;
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
-use crate::components::bitcoin_comp::{GenBitcoinAddrButton, QueryBtcBalanceComp};
-use crate::components::common_alg_comp::{AlgButton, AlgButtonList};
-use crate::components::erc20_comp::{GenErc20AddrButton, QueryEthBalanceComp, QueryUsdtBalanceComp};
-use crate::components::misc_comp::{ResultLabel, NumButton, SetSeedButton};
+use std::str::FromStr;
+
 
 
 fn main() {
@@ -33,50 +29,65 @@ fn main() {
     launch(App);
 }
 
-fn App() -> Element {
-    use_context_provider(|| MyState::default());
 
-    //see style: https://jenil.github.io/chota/#buttons
+// All of our routes will be a variant of this Route enum
+#[derive(Routable, PartialEq, Clone)]
+enum Route {
+    // if the current location is "/home", render the Home component
+    #[route("/home")]
+    Home {},
+    // if the current location is "/blog", render the Blog component
+    #[route("/blog/:id")]
+    Blog { id: i32 },
+
+    //  if the current location doesn't match any of the above routes, render the NotFound component
+    #[route("/:..segments")]
+    PageNotFound { segments: Vec<String> },
+}
+
+#[component]
+fn PageNotFound(segments: Vec<String>) -> Element {
     rsx! {
-         style { {include_str!("../public/chota.min.css")} }
-         style { {include_str!("../public/main.css")} }
-        div {
-            div {
-                class:"button-group",
-                for i in 0..10 {
-                    NumButton { num: i }
-                }
+        h1 { "Page not found" }
+        p { "We are terribly sorry, but the page you requested doesn't exist." }
+        pre { color: "red", "log:\nattemped to navigate to: {segments:?}" }
+    }
+}
 
-                 // SetSeedButton{}
-            }
-            hr {}
-
-            AlgButtonList{}
-            hr {}
-
-            div{
-                class:"button-group2",
-                GenBitcoinAddrButton{}
-                GenErc20AddrButton{}
-            }
-
-
-            hr {}
-            ResultLabel{prefix: "Input: "}
-
-            hr {}
-
-            QueryBtcBalanceComp{}
-            QueryEthBalanceComp{}
-            QueryUsdtBalanceComp{}
-
-
+fn Home() -> Element {
+    rsx! {
+        h2{
+            "Home"
         }
+    }
+}
 
+#[component]
+fn Blog(id: i32) -> Element {
+    rsx! {
+        h2{
+            "Blog"
+        }
     }
 }
 
 
+fn App() -> Element {
+    //MyState usage: let  result_str = use_context::<MyState>().result_str;
+    use_context_provider(|| MyState::default());
+
+    //see style: https://jenil.github.io/chota/#buttons
+    rsx! {
+        //define css here to compatible with ios
+         style { {include_str!("../public/chota.min.css")} }
+         style { {include_str!("../public/main.css")} }
+
+        h2{
+            "hello crab.rs"
+        }
+
+    }
+}
 
 
 #[derive(Default, Clone)]

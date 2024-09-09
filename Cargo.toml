@@ -1,30 +1,29 @@
 [package]
-name = "Wallet"
+name = "crab-rs"
 version = "0.1.0"
 edition = "2021"
 description ="demo"
 
 [features]
-web=["dioxus/web", "getrandom"]
+web=["dioxus/web"]
 mobile= ["dioxus/mobile"]
 desktop= ["dioxus/desktop"]
 
 [dependencies]
-dioxus = { version = "0.5"}
+dioxus = { version = "0.5", features = ["router"]}
 #dioxus = { path="/Users/zhouzhipeng/RustroverProjects/dioxus/packages/dioxus"}
 # Debug
 dioxus-logger = "0.5.1"
 log = "0.4.22"
-reqwest = { version = "0.12.7", features = ["json"] }
-serde_json = "1.0.127"
-anyhow = "1.0.86"
-serde = { version = "1.0.209", features = ["derive"] }
-rust-utils={path="/Users/zhouzhipeng/RustroverProjects/rust-utils", features = ["blockchain"]}
-getrandom = { version = "0.2.15", features = ["js"] , optional = true}
+reqwest = { version = "0.12", features = ["json"] }
+serde_json = "1"
+anyhow = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+rust-utils={path="/Users/zhouzhipeng/RustroverProjects/rust-utils", features = ["data-api"]}
 
 [package.metadata.bundle]
-name = "Wallet"
-identifier = "com.zhouzhipeng.wallet"
+name = "crab-rs"
+identifier = "com.zhouzhipeng.crab"
 resources = ["assets/**/*"]
 category = "Utility"
 short_description = "An example of a bundled application"

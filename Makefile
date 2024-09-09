@@ -1,6 +1,6 @@
 build_ios_sim:
 	cargo bundle --target aarch64-apple-ios-sim --features mobile
-	#cp assets/Info.plist target/aarch64-apple-ios-sim/debug/bundle/ios/Wallet.app/Info.plist
+	#cp assets/Info.plist target/aarch64-apple-ios-sim/debug/bundle/ios/crab.rs.app/Info.plist
 
 build_ios_device:
 	cargo clean
@@ -12,10 +12,10 @@ build_macos:
 build_ipa:build_ios_device
 	cp -r target/aarch64-apple-ios/release/bundle/ios target/Payload
 	cd target &&\
-	rm -rf wallet.ipa&&\
-	zip -r wallet.ipa Payload&&\
+	rm -rf crab.rs.ipa&&\
+	zip -r crab.rs.ipa Payload&&\
 	rm -rf ../Payload&&\
-	cp -r  wallet.ipa /Users/zhouzhipeng/Library/Mobile\ Documents/com~apple~CloudDocs/wallet.ipa
+	cp -r  crab.rs.ipa /Users/zhouzhipeng/Library/Mobile\ Documents/com~apple~CloudDocs/crab.rs.ipa
 
 build_wasm:
 	cargo clean
@@ -25,26 +25,26 @@ build_wasm:
 	dx build --release --features web
 
 install_ios_sim:
-	xcrun simctl install booted target/aarch64-apple-ios-sim/debug/bundle/ios/Wallet.app
+	xcrun simctl install booted target/aarch64-apple-ios-sim/debug/bundle/ios/crab.rs.app
 
 run_macos:
-	cargo run --package Wallet --bin Wallet  --features desktop
+	cargo run --package crab.rs --bin crab.rs  --features desktop
 
 run_ios_sim:build_ios_sim install_ios_sim
-	xcrun simctl launch --console booted com.zhouzhipeng.wallet
+	xcrun simctl launch --console booted com.zhouzhipeng.crab.rs
 
 upload_wasm:build_wasm
-	cp -r dist wallet
+	cp -r dist crab.rs
 
-	zip -r wallet.zip wallet
+	zip -r crab.rs.zip crab.rs
 
-	rm -rf wallet
+	rm -rf crab.rs
 
-	mv wallet.zip dist/
+	mv crab.rs.zip dist/
 
 	curl 'https://zhouzhipeng.com/files/upload?unzip=true' \
       -H "${AUTH_KEY}" \
-      -F "file=@dist/wallet.zip"
+      -F "file=@dist/crab.rs.zip"
 
 
 dev_server:

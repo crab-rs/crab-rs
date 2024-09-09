@@ -1,7 +1,7 @@
 [application]
 ## bind to DioxusConfig.rs
 # App (Project) Name
-name = "wallet"
+name = "crab-rs"
 
 base_path = ""
 
@@ -21,7 +21,7 @@ pre_compress=false
 [web.app]
 
 # HTML title tag content
-title = "wallet"
+title = "crab-rs"
 
 [web.watcher]
 
