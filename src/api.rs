@@ -12,14 +12,14 @@ const HOST: &'static str = "https://zhouzhipeng.com";
 impl IData for PostAPI {
     type Model = Post;
 
-    #[cfg(not(test))]
+    // #[cfg(not(test))]
     fn get_host() -> &'static str {
         HOST
     }
-    #[cfg(test)]
-    fn get_host() -> &'static str {
-        "https://zhouzhipeng.com"
-    }
+    // #[cfg(test)]
+    // fn get_host() -> &'static str {
+    //     "https://zhouzhipeng.com"
+    // }
 
     fn get_category() -> &'static str {
         "crab-post"
@@ -44,11 +44,9 @@ mod tests {
             content: "45sfsdf6".to_string(),
             author_id: "".to_string(),
             published: false,
-            created_at: 1111,
-            updated_at: 3333,
         }).await?;
 
-        let posts  = PostAPI::list(10).await;
+        let posts  = PostAPI::list_raw(10).await;
         println!("{:#?}", posts);
 
         Ok(())

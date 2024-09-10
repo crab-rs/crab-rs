@@ -41,7 +41,7 @@ pub enum Route {
     Home {},
     // if the current location is "/blog", render the Blog component
     #[route("/blog/:id")]
-    Blog { id: i32 },
+    Blog { id: i64 },
 
     //  if the current location doesn't match any of the above routes, render the NotFound component
     #[route("/:..segments")]
@@ -64,28 +64,47 @@ fn NoPosts() -> Element {
         }
     }
 }
+fn Loading() -> Element {
+    rsx! {
+       h2{
+            "Loading..."
+        }
+    }
+}
+
+#[component]
+fn ErrMsg(msg: String) -> Element {
+    rsx! {
+       h2{
+            "Err... {msg}"
+        }
+    }
+}
 
 fn Home() -> Element {
     let posts = use_resource(|| async move {
-        PostAPI::list(10).await.unwrap_or(vec![])
+        PostAPI::list_raw(10).await.unwrap_or(vec![])
     });
 
     match &*posts.read_unchecked() {
         None => {
             rsx! {
-               h2{"Loading..."}
+               Loading{}
             }
         }
         Some(posts) => {
             rsx! {
+                h1{
+                    "Articles"
+                }
                 if posts.is_empty(){
                     NoPosts{}
                 }else{
                     for post in posts {
                         p{
                             Link{
-                                to: Route::Blog {id: 1},
-                                "{post.title}"
+                                to: Route::Blog {id: post.id},
+                                "{post.to::<Post>().unwrap().title}"
                             }
                         }
 
@@ -98,15 +117,37 @@ fn Home() -> Element {
 }
 
 #[component]
-fn Blog(id: i32) -> Element {
-    rsx! {
-        p{
-            Link{to:Route::Home{}, "Home"}
-        }
-        h2{
-            "Blog"
+fn Blog(id: i64) -> Element {
+    let posts = use_resource(move || async move {
+        PostAPI::get(id).await
+    });
+    match &*posts.read_unchecked() {
+        None => {rsx!{Loading{}}}
+        Some(r) => {
+            match r {
+                Ok(post) => {
+                    rsx! {
+                        p{
+                            Link{to:Route::Home{}, "Home"}
+                        }
+                        h2{
+                            "{post.title}"
+                        }
+
+                        pre{
+                            "{post.content}"
+                        }
+                    }
+                }
+                Err(e) => {
+                    rsx!{
+                        ErrMsg{msg: format!("{:?}",e)}
+                    }
+                }
+            }
         }
     }
+
 }
 
 

@@ -7,6 +7,4 @@ pub struct Post{
     pub content: String,
     pub author_id: String,
     pub published: bool,
-    pub created_at: i64,
-    pub updated_at: i64,
 }
