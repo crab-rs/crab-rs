@@ -1,56 +1,6 @@
-[package]
-name = "crab-rs"
-version = "0.1.0"
-edition = "2021"
-description ="demo"
-
-[features]
-web=["dioxus/web"]
-mobile= ["dioxus/mobile"]
-desktop= ["dioxus/desktop"]
-
-[dependencies]
-dioxus = { version = "0.5", features = ["router"]}
-dioxus-router = "0.5.6"
-dioxus-ssr = { version = "0.5.6", optional = true }
-#dioxus = { path="/Users/zhouzhipeng/RustroverProjects/dioxus/packages/dioxus"}
-# Debug
-dioxus-logger = "0.5.1"
-log = "0.4.22"
-reqwest = { version = "0.12", features = ["json"] }
-serde_json = "1"
-anyhow = "1.0"
-serde = { version = "1.0", features = ["derive"] }
-rust-utils={path="/Users/zhouzhipeng/RustroverProjects/rust-utils", features = ["data-api"]}
-
-[dev-dependencies]
-tokio={version = "1", features = ["full"]}
-
-[package.metadata.bundle]
-name = "crab-rs"
-identifier = "com.zhouzhipeng.crab"
-resources = ["assets/**/*"]
-category = "Utility"
-short_description = "An example of a bundled application"
-long_description = """
-A trivial application that just displays a blank window with
-a title bar.  It serves as an example of an application that
-can be bundled with cargo-bundle, as well as a test-case for
-cargo-bundle's support for bundling crate examples.
-"""
-
-
-
-[package.metadata.bundle.macos]
-minimum_system_version = "10.13"
-frameworks = []
-# DMG specific configuration
-create_dmg = true
-#dmg_background = "path/to/your/background.png"
-#dmg_window_position = [100, 100]
-#dmg_window_size = [500, 400]
-#dmg_icon_position = [225, 175]
-#dmg_icon_size = 80
-
-[package.metadata.bundle.ios]
-frameworks = ["WebKit"]
+[workspace]
+resolver="2"
+members = [
+    "crates/*",
+]
+default-members=["crates/app"]
