@@ -46,6 +46,14 @@ upload_wasm:build_wasm
       -H "${AUTH_KEY}" \
       -F "file=@dist/crab.rs.zip"
 
+	# clean CF cache
+
+	curl --request POST \
+      --url https://api.cloudflare.com/client/v4/zones/4e12ec626e551ffaa8fc17a27339fdf1/purge_cache \
+      -H 'Content-Type: application/json' \
+      -H "${CF_CACHE_KEY}" \
+      --data '{"purge_everything": true}'
+
 
 dev_server:
 	lsof -ti:8080 | xargs kill -9
