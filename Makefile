@@ -21,7 +21,7 @@ build_wasm:
 	cargo clean
     #brew install llvm
 	export PATH="/opt/homebrew/opt/llvm/bin:$(PATH)" &&  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib" && export CPPFLAGS="-I/opt/homebrew/opt/llvm/include" && \
-	rm -rf dist && \
+	cd crates/app && rm -rf dist && \
 	dx build --release --features web
 
 install_ios_sim:
@@ -34,26 +34,31 @@ run_ios_sim:build_ios_sim install_ios_sim
 	xcrun simctl launch --console booted com.zhouzhipeng.crab.rs
 
 upload_wasm:build_wasm
-	cp -r dist crab.rs
-
-	zip -r crab.rs.zip crab.rs
-
-	rm -rf crab.rs
-
-	mv crab.rs.zip dist/
-
+	cd crates/app && \
+	cp -r dist crab.rs &&\
+	zip -r crab.rs.zip crab.rs &&\
+	rm -rf crab.rs &&\
+	mv crab.rs.zip dist/ &&\
 	curl 'https://zhouzhipeng.com/files/upload?unzip=true' \
       -H "${AUTH_KEY}" \
       -F "file=@dist/crab.rs.zip"
 
 	# clean CF cache
+	clear_cf_cache
 
+
+clear_cf_cache:
 	curl --request POST \
-      --url https://api.cloudflare.com/client/v4/zones/4e12ec626e551ffaa8fc17a27339fdf1/purge_cache \
-      -H 'Content-Type: application/json' \
-      -H "${CF_CACHE_KEY}" \
-      --data '{"purge_everything": true}'
-
+          --url https://api.cloudflare.com/client/v4/zones/4e12ec626e551ffaa8fc17a27339fdf1/purge_cache \
+          -H 'Content-Type: application/json' \
+          -H "${CF_CACHE_KEY}" \
+          --data '{"purge_everything": true}'
+clear_cf_cache_single:
+	curl --request POST \
+          --url https://api.cloudflare.com/client/v4/zones/4e12ec626e551ffaa8fc17a27339fdf1/purge_cache \
+          -H 'Content-Type: application/json' \
+          -H "${CF_CACHE_KEY}" \
+          --data '{"files": ["https://crab.rs"]}'
 
 dev_server:
 	lsof -ti:8080 | xargs kill -9

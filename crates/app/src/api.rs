@@ -24,11 +24,6 @@ impl IData for PostAPI {
     fn get_category() -> &'static str {
         "crab-post"
     }
-
-    #[cfg(test)]
-    fn get_auth_key() -> &'static str {
-        env!("API_AUTH_KEY")
-    }
 }
 
 

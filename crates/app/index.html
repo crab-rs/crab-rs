@@ -16,6 +16,7 @@
 
     init("/{base_path}/assets/dioxus/{app_name}_bg.wasm").then(wasm => {
         if (wasm.__wbindgen_start == undefined) {
+            main.innerHTML="";
             wasm.main();
         }
     });
